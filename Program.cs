@@ -27,6 +27,7 @@ namespace osuLegacyBeatmapConverter
                     catch (Exception e)
                     {
                         Console.Write("Could not convert input file:\n" + e);
+                        return 1;
                     }
                 }
             }
@@ -38,11 +39,8 @@ namespace osuLegacyBeatmapConverter
             if (beatmap == null)
             {
                 Console.Write("Failed");
-                Console.ReadKey();
                 return 1;
             }
-
-            Console.Write("Converting '"+beatmap.BeatmapInfo.Metadata.Artist + " - "+ beatmap.BeatmapInfo.Metadata.Title + " ["+ beatmap.BeatmapInfo.Version + "]'\n");
 
             IBeatmap convertedBeatmap = null;
             ManiaBeatmapConverter maniaBeatmapConverter = null;
@@ -54,7 +52,6 @@ namespace osuLegacyBeatmapConverter
             } catch (Exception e)
             { 
                 Console.Write("Could not convert input file:\n" + e);
-                Console.ReadKey();
                 return 1;
             }
 
@@ -77,9 +74,6 @@ namespace osuLegacyBeatmapConverter
                     
                 }
             }
-
-            Console.Write("Finished. "+ columns + "k\n");
-            Console.ReadKey();
 
             return 0;
         }
