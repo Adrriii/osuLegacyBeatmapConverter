@@ -12,6 +12,12 @@ namespace osuLegacyBeatmapConverter
     class Program {
         static int Main (string[] args)
         {
+            if(args == null)
+            {
+                Console.Write("Missing arguments: [inputMap.osu] [outputMap] {forceKeys}\n");
+                return 1;
+            }
+
             LegacyBeatmapDecoder legacyBeatmapDecoder = new LegacyBeatmapDecoder();
             IBeatmap beatmap = null;
             
@@ -48,6 +54,13 @@ namespace osuLegacyBeatmapConverter
             {
                 beatmap.BeatmapInfo.Ruleset = new OsuRuleset().RulesetInfo;
                 maniaBeatmapConverter = new ManiaBeatmapConverter(beatmap);
+
+                // Third argument is optionnal and can force TargetColumns
+                if (args.Length > 2 )
+                {
+                    maniaBeatmapConverter.TargetColumns = Int32.Parse(args[2]);
+                }
+                    
                 convertedBeatmap = maniaBeatmapConverter.Convert();
             } catch (Exception e)
             { 
@@ -58,6 +71,9 @@ namespace osuLegacyBeatmapConverter
             int columns = maniaBeatmapConverter.TargetColumns;
             using (StreamWriter writer = new StreamWriter(args[1]))
             {
+                writer.Write("[Difficulty]\n");
+                writer.Write("CircleSize: "+ columns + "\n");
+
                 writer.Write("[HitObjects]\n");
                 String current = "";
                 foreach (ManiaHitObject maniaHitObject in convertedBeatmap.HitObjects)
