@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "osuBeatmapConverter": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Code\\osuBeatmapConverter\\working\\1791443.osu C:\\Code\\osuBeatmapConverter\\working\\1791443.osu.mania"
+    }
+  }
+}

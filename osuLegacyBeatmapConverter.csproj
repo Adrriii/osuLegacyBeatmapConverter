@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="ppy.osu.Framework" Version="2018.1030.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\osu\osu-resources\osu.Game.Resources\osu.Game.Resources.csproj" />
+    <ProjectReference Include="..\osu\osu.Game.Rulesets.Mania\osu.Game.Rulesets.Mania.csproj" />
+    <ProjectReference Include="..\osu\osu.Game.Rulesets.Osu\osu.Game.Rulesets.Osu.csproj" />
+    <ProjectReference Include="..\osu\osu.Game\osu.Game.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Label="osuBeatmapConverterProperties">
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Description>convert maps.</Description>
+    <AssemblyName>osu Converter</AssemblyName>
+    <Title>osu converter</Title>
+    <Product>osu converter</Product>
+    <Version>0.1.0</Version>
+    <FileVersion>0.0.0</FileVersion>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+</Project>
