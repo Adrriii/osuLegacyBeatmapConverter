@@ -66,10 +66,10 @@ namespace osuLegacyBeatmapConverter
                     switch (maniaHitObject.GetType().Name)
                     {
                         case "Note":
-                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ",0:0:0:0\n";
+                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ",1,0,0:0:0:0\n";
                             break;
                         case "HoldNote":
-                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ","+(maniaHitObject as HoldNote).EndTime.ToString().Split(",")[0]+":0:0:0\n";
+                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ",128,0,"+(maniaHitObject as HoldNote).EndTime.ToString().Split(",")[0]+":0:0:0\n";
                             break;
                     }
                     writer.Write(current);
