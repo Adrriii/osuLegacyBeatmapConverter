@@ -59,19 +59,21 @@ namespace osuLegacyBeatmapConverter
             using (StreamWriter writer = new StreamWriter(args[1]))
             {
                 writer.Write("[HitObjects]\n");
+                String current = "";
                 foreach (ManiaHitObject maniaHitObject in convertedBeatmap.HitObjects)
                 {
                     int columnPosition = (((maniaHitObject.Column) * (512 / columns)) + (256 / columns));
                     switch (maniaHitObject.GetType().Name)
                     {
                         case "Note":
-                            writer.Write(columnPosition + ",192," + maniaHitObject.StartTime+",0:0:0:0\n");
+                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ",0:0:0:0\n";
                             break;
                         case "HoldNote":
-                            writer.Write(columnPosition + ",192," + maniaHitObject.StartTime+","+(maniaHitObject as HoldNote).EndTime+":0:0:0\n");
+                            current = columnPosition + ",192," + maniaHitObject.StartTime.ToString().Split(",")[0] + ","+(maniaHitObject as HoldNote).EndTime.ToString().Split(",")[0]+":0:0:0\n";
                             break;
                     }
-                    
+                    writer.Write(current);
+
                 }
             }
 
